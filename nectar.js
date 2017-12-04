@@ -27,7 +27,7 @@
  *
  */
 
-var VERSION = "0.0.45";
+var VERSION = "-DEV-TS";
 
 var fs = require('fs');
 var os = require('os');
@@ -327,6 +327,15 @@ function Build(prepare)
   {
     console.dir("[!] Please set your id and your key before build (see nectar --help)");
     return;
+  }
+
+  var my_name = CLI.stack[CLI.stack.length - 1];
+  if (my_name.search(".ts") != -1)
+  {
+    var my_jsname = my_name.split('.');
+    my_jsname = my_jsname[0] + '.js';
+    console.log(child_process.execSync("tsc " + my_name).toString());
+    CLI.stack[CLI.stack.length - 1] = my_jsname;
   }
 
   var single = false;

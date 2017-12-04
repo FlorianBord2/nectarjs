@@ -6,6 +6,9 @@
   "bin": {
     "nectar": "./nectar.js"
   },
+  "dependencies": {
+    "typescript": "^2.6.2"
+  },
   "scripts": {},
   "repository": {
     "type": "git",
